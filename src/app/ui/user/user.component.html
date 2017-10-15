@@ -1,0 +1,39 @@
+
+<div class="row">
+	<div class="col-sm-8 ">
+		<h2 class="text-center"> Current Users </h2>
+		<div class="card-columns">
+			<div  class="card" *ngFor="let user of users"  >
+				<span class="card-header">
+					{{user.type}}
+				</span>
+				<span class="card-body">
+					<div class="col-sm-12" >
+						<h4 class="card-title">{{user.name}}</h4>
+						<span class="card-subtitle mb-2 text-muted">{{user.title}}</span>
+					</div>
+				</span>
+				<span class="card-footer">
+					<button class="btn btn-primary" [routerLink]="['/users', user.id]" (click)="onSelect(user)">Edit</button>
+					<button class="btn btn-danger" (click)="delete(user); $event.stopPropagation()">Delete</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<form class="col-sm-4 form-group" #userForm="ngForm">
+		<h2 class="text-center"> New User</h2>
+		<label>User Name: </label> <input class="form-control" name="name" ngModel  />
+		<label>User Title: </label> <input class="form-control" name="title" ngModel />
+		<label>User Type: </label>
+		<select #userType class="form-control" name="type" ngModel>
+			<option *ngFor="let type of types" [value]="type.value">
+		        {{type.name}}
+		    </option>
+		</select>
+		<div class="col-sm-12">
+			<button (click)="add(userForm.value)" class="btn btn-success pull-right"> Add </button>
+		</div>
+	</form>
+
+</div>

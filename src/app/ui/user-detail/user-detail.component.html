@@ -1,0 +1,20 @@
+<button class="btn" (click)="goBack()">Back</button>
+<div *ngIf="user" class="col-sm-6">
+
+	<h2>{{user.name}}</h2>
+
+	<div class="form-group">
+		<label>Name: </label>
+		<input class="form-control" [(ngModel)]="user.name" placeholder="name"/>
+		<label>Title: </label>
+		<input class="form-control" [(ngModel)]="user.title" placeholder="title"/>
+		<label>Authority: </label>
+		<select class="form-control" [(ngModel)]="user.type">
+			<option *ngFor="let type of types" [value]="type.value">
+		        {{type.name}}
+		    </option>
+		</select>
+	</div>
+</div>
+
+<button (click)="save()">Save</button>
