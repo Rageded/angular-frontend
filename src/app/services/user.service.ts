@@ -10,6 +10,8 @@ import 'rxjs/add/operator/toPromise';
 export class UserService {
 
 	private userUrl = 'http://localhost:1337/users';
+    private loginUrl = 'http://localhost:1337/login';
+   
 
     private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -82,6 +84,20 @@ export class UserService {
                 .toPromise()
                 .then(() => null)
                 .catch(this.handleError);
+        }
+
+
+         /**
+        * Create User
+        * @param  {User}        name [description]
+        * @return {Promise<User>}      [description]
+        */
+        signUp(user: User): Promise<User> {
+           return this.http
+           .post(this.loginUrl, user, {headers: this.headers})
+           .toPromise()
+           .then(res => res.json() as User)
+           .catch(this.handleError);
         }
 
        /**

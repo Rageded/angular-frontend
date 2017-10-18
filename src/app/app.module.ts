@@ -14,7 +14,12 @@ import { TopNavComponent } from './ui/top-nav/top-nav.component';
 import { UserComponent } from './ui/user/user.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { UserDetailComponent } from './ui/user-detail/user-detail.component';
+import { SignUpComponent } from './ui/sign-up/sign-up.component';
+
 import { UserService} from './services/user.service';
+import { LoginService} from './services/login.service';
+import { AuthGuardService} from './services/auth.guard.service';
+
 
 
 @NgModule({
@@ -23,7 +28,8 @@ import { UserService} from './services/user.service';
     TopNavComponent,
     UserComponent,
     DashboardComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,11 @@ import { UserService} from './services/user.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService, 
+    LoginService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 

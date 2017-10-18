@@ -3,6 +3,8 @@ export class User {
   name: string;
   title: string;
   type: string;
+  password: string;
+  email: string;
 }
 
 export const types: any[] = [
